@@ -16,8 +16,8 @@ class Triangle:
         return (True, "")
     
     def determineTriangle(self):
-        if self.validateSides[0] is False:
-            return self.validateSides[1]
+        if self.validateSides()[0] is False:
+            return self.validateSides()[1]
         
         if self.side_a == self.side_b == self.side_c:
             triangle = "Equilateral"
