@@ -1,5 +1,17 @@
 import sys
 
+class Triangle:
+    def __init__(self, side1, side2, side3):
+        sides = sorted([side1, side2, side3])
+        self.side_a, self.side_b, self.side_C = self.sides
+    
+    def validateSides(self):
+        if any(side <= 0 for side in self.sides):
+            return False
+        if self.side_a + self.side_b <= self.side_c:
+            return False
+        return True
+
 def getSides():
     sides = []
     for num, i in enumerate(range(3)):
