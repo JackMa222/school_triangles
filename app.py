@@ -9,7 +9,6 @@ def main():
 
 @app.route('/send', methods=["GET", "POST"])
 def calc():
-    triangleError = False
+    new = Triangle(float(request.form.get("side_a")), float(request.form.get("side_b")), float(request.form.get("side_c")))
     
-    
-    return render_template("index.html", triangle_message=triangleMessage)
+    return render_template("index.html", triangle_message=new.triangleType)
