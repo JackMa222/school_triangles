@@ -11,6 +11,8 @@ class Triangle:
         # Longer output statements within class for ease of use externally
         self.validtyStatement = self.createValidtyStatement()
         self.triangleTypeStatement = self.createTriangleTypeStatement()
+        # Validty in Valid or Invalid instead of True or False
+        self.validtyWord = self.createValidityWord()
         
     def convertSidesToFloat(self):
         sides = []
@@ -65,6 +67,11 @@ class Triangle:
         else:
             return self.validtyError
         
+    def createValidityWord(self):
+        if self.validityBool:
+            return "Valid"
+        else:
+            return "Invalid"
     
     def getSides():
         sides = []
