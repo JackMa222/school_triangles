@@ -87,14 +87,17 @@ class Triangle:
 class MultipleTriangles:
     def __init__(self, csv_input):
         self.csv_input = csv_input
-        self.csvExtractionValidity = self.extractCsvData()[0]
-        self.csvData = self.extractCsvData()[1] 
+        self.extractedCsvDataFunc = self.extractCsvData()
+        self.csvExtractionValidity = self.extractedCsvDataFunc[0]
+        self.csvData = self.extractedCsvDataFunc[1]
+        self.triangles = self.extractedCsvDataFunc[2]
  
     def extractCsvData(self):
         try:
             with open(f"{self.csv_input}", "r", encoding='utf-8-sig') as f:
                 reader = csv.DictReader(f)
                 newCsvData = []
+                triangles = []
                 for row in reader:
                     tri = Triangle(row['side_a'], row['side_b'], row['side_c'])                    
                     newCsvData.append({
@@ -104,11 +107,11 @@ class MultipleTriangles:
                         'validity': tri.validtyWord,
                         'triangle_type': tri.triangleType
                     })
+                    triangles.append(tri)
         except:
-            return (False, [])
-        return (True, newCsvData)
-    
-    
+            return (False, [], [])
+        return (True, newCsvData, triangles)
+        
     def writeCsvData(self, file_location):
         with open(f"{file_location}{datetime.today().isoformat()}.csv", "w") as nf:
             fieldnames = ['side_a', 'side_b', 'side_c', 'validity', 'triangle_type']
@@ -117,3 +120,9 @@ class MultipleTriangles:
             writer.writeheader()
             for row in self.csvData:
                 writer.writerow(row)
+    
+    def printCsvData(self):
+        print("Printing triangle information")
+        for triangle in self.triangles:
+            print(triangle.validtyStatement)
+            print(triangle.triangleTypeStatement)

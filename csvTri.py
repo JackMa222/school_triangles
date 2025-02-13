@@ -4,3 +4,4 @@ from datetime import datetime
 
 newTriangle = MultipleTriangles("tri_sides.csv")
 newTriangle.writeCsvData("csv/")
+newTriangle.printCsvData()
