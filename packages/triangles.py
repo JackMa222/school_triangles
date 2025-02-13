@@ -1,4 +1,7 @@
 import sys
+import os
+import csv
+from datetime import datetime
 
 class Triangle:
     def __init__(self, side1, side2, side3):
@@ -80,3 +83,37 @@ class Triangle:
                 sides.append(float(input(f"Enter Side {num}")))
             except ValueError:
                 sys.exit("Input must be a valid number")
+                
+class MultipleTriangles:
+    def __init__(self, csv_input):
+        self.csv_input = csv_input
+        self.csvExtractionValidity = self.extractCsvData()[0]
+        self.csvData = self.extractCsvData()[1] 
+ 
+    def extractCsvData(self):
+        try:
+            with open(f"{self.csv_input}", "r", encoding='utf-8-sig') as f:
+                reader = csv.DictReader(f)
+                newCsvData = []
+                for row in reader:
+                    tri = Triangle(row['side_a'], row['side_b'], row['side_c'])                    
+                    newCsvData.append({
+                        'side_a': row['side_a'],
+                        'side_b': row['side_b'],
+                        'side_c': row['side_c'],
+                        'validity': tri.validtyWord,
+                        'triangle_type': tri.triangleType
+                    })
+        except:
+            return (False, [])
+        return (True, newCsvData)
+    
+    
+    def writeCsvData(self, file_location):
+        with open(f"{file_location}{datetime.today().isoformat()}.csv", "w") as nf:
+            fieldnames = ['side_a', 'side_b', 'side_c', 'validity', 'triangle_type']
+            writer = csv.DictWriter(nf, fieldnames=fieldnames)
+            
+            writer.writeheader()
+            for row in self.csvData:
+                writer.writerow(row)
