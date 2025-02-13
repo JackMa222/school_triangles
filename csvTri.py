@@ -1,5 +1,6 @@
 from packages.triangles import Triangle
 import csv
+from datetime import datetime
 
 with open("tri_sides.csv", "r", encoding='utf-8-sig') as f:
     reader = csv.DictReader(f)
@@ -16,3 +17,12 @@ with open("tri_sides.csv", "r", encoding='utf-8-sig') as f:
             'validity': tri.validtyWord,
             'triangle_type': tri.triangleType
         })
+
+with open(f"csv/tri_sides_{datetime.today().isoformat()}.csv", "w") as nf:
+    fieldnames = ['side_a', 'side_b', 'side_c', 'validity', 'triangle_type']
+    writer = csv.DictWriter(nf, fieldnames=fieldnames)
+    
+    writer.writeheader()
+    for row in newCsvData:
+        writer.writerow(row)
+    
