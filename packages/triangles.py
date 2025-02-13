@@ -2,19 +2,24 @@ import sys
 
 class Triangle:
     def __init__(self, side1, side2, side3):
-        self.original_sides = sorted([side1, side2, side3])
-        self.sides = self.convertSidesToFloat()
-        self.side_a, self.side_b, self.side_c = self.sides
+        self.sides = sorted([side1, side2, side3])
+        self.side_a, self.side_b, self.side_c = self.convertSidesToFloat()
+        self.validty = self.validateSides()
+        self.validityBool = self.validty[0]
+        self.validtyError = self.validty[1]
         self.triangleType = self.determineTriangle()
+        # Longer output statements within class for ease of use externally
+        self.validtyStatement = self.createValidtyStatement()
+        self.triangleTypeStatement = self.createTriangleTypeStatement()
         
     def convertSidesToFloat(self):
         sides = []
-        for side in self.original_sides:
+        for side in self.sides:
             try:
                 floatNum = float(side)
             except:
-                # this string will be caught in validateSides
-                floatNum = 'Not a number'
+                # this will be caught at some point
+                floatNum = 0
             sides.append(floatNum)
         return sides
 
@@ -37,7 +42,7 @@ class Triangle:
     def determineTriangle(self):
         if self.validateSides()[0] is False:
             return self.validateSides()[1]
-        
+                        
         if self.side_a == self.side_b == self.side_c:
             triangle = "Equilateral"
         elif self.side_a == self.side_b or self.side_b == self.side_c or self.side_a == self.side_c:
@@ -47,6 +52,19 @@ class Triangle:
         else:
             triangle = "Scalene"
         return triangle
+    
+    def createValidtyStatement(self):
+        if self.validityBool:
+            return "Triangle is valid"
+        else:
+            return "Triangle is invalid"
+    
+    def createTriangleTypeStatement(self):
+        if self.validityBool:
+            return f"Triangle is {self.triangleType}"
+        else:
+            return self.validtyError
+        
     
     def getSides():
         sides = []
