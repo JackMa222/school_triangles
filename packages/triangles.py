@@ -2,9 +2,22 @@ import sys
 
 class Triangle:
     def __init__(self, side1, side2, side3):
-        self.sides = sorted([side1, side2, side3])
+        self.original_sides = sorted([side1, side2, side3])
+        self.sides = self.convertSidesToFloat()
         self.side_a, self.side_b, self.side_c = self.sides
         self.triangleType = self.determineTriangle()
+        
+    def convertSidesToFloat(self):
+        sides = []
+        for side in self.original_sides:
+            try:
+                floatNum = float(side)
+            except:
+                # this string will be caught in validateSides
+                floatNum = 'Not a number'
+            sides.append(floatNum)
+        return sides
+
     
     def validateSides(self):
         if any(type(side) not in [float, int] for side in self.sides):
