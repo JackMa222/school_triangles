@@ -20,13 +20,19 @@ class Triangle:
 
     
     def validateSides(self):
-        if any(type(side) not in [float, int] for side in self.sides):
-            return (False, "Sides must be a number")
-        if any(side <= 0 for side in self.sides):
-            return (False, "Sides cannot be zero or negative")
-        if self.side_a + self.side_b <= self.side_c:
-            return (False, "Triangle is physically invalid")
-        return (True, "")
+        try:
+            for side in self.sides:
+                if type(side) == str:
+                    if side.isnumeric() == False:
+                        return (False, "Sides must be a postive number")
+                elif type(side) in [float, int]:
+                    if side <= 0:
+                        return (False, "Sides cannot be zero or negative")
+            if self.side_a + self.side_b <= self.side_c:
+                return (False, "Triangle is physically invalid")
+            return (True, "")
+        except:
+            return (False, "Error validating sides")
     
     def determineTriangle(self):
         if self.validateSides()[0] is False:
