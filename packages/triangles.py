@@ -28,7 +28,7 @@ class Triangle:
                 elif type(side) in [float, int]:
                     if side <= 0:
                         return (False, "Sides cannot be zero or negative")
-            if self.side_a + self.side_b <= self.side_c:
+            if float(self.side_a) + float(self.side_b) <= float(self.side_c):
                 return (False, "Triangle is physically invalid")
             return (True, "")
         except:
