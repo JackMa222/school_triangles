@@ -25,4 +25,3 @@ with open(f"csv/tri_sides_{datetime.today().isoformat()}.csv", "w") as nf:
     writer.writeheader()
     for row in newCsvData:
         writer.writerow(row)
-    
