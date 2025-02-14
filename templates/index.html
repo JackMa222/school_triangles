@@ -4,15 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Triangles</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form action="/send" method="POST">
-        <input type="number" name="side_a" id="side_a">
-        <input type="number" name="side_b" id="side_b">
-        <input type="number" name="side_c" id="side_c">
-        <button type="submit">Submit</button>
-    </form>
-    <p>{{ triangleMessage }}</p>
-    <p>{{ triangleValidity }}</p>
+    <div class="main">
+        <form action="/send" method="POST">
+            <div class="textinputs">
+            <label for="side_a">Side A</label>
+            <input type="number" name="side_a" id="side_a">
+            </div>
+            <div class="textinputs">
+            <label for="side_b">Side B</label>
+            <input type="number" name="side_b" id="side_b">
+            </div>
+            <div class="textinputs">
+            <label for="side_c">Side C</label>
+            <input type="number" name="side_c" id="side_c">
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        <div class="output">
+            <p>{{ triangleMessage }}</p>
+            <p>{{ triangleValidity }}</p>
+        </div>
+    </div>
 </body>
 </html>

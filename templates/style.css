@@ -1,0 +1,43 @@
+body {
+    display: flex;
+    justify-content: center;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: lightblue;
+    flex-grow: 1;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.output {
+    text-align: center;
+    font-weight: 600;
+}
+
+.textinputs {
+    display: flex;
+    width: 100%;
+    gap: 4px;
+}
+
+.textinputs > label {
+    flex-shrink: 0;
+}
+
+.textinputs > input {
+    flex-grow: 1;
+
+}
