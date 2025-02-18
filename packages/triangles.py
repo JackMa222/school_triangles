@@ -76,6 +76,7 @@ class Triangle:
         else:
             return "Invalid"
     
+    @staticmethod
     def getSides():
         sides = []
         for num in range(3):
