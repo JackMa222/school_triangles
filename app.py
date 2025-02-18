@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def main():
-    return render_template("index.html", triangleMessage="Enter triangle information above", triangleValidity="")
+    return render_template("index.html", triangleMessage="Enter triangle information above", triangleValidity="Trianlge Validity will appear here")
 
 @app.route('/send', methods=["GET", "POST"])
 def calc():

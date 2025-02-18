@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Triangles</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="main">
+        <h1>Determine Triangle Type</h1>
         <form action="/send" method="POST">
             <div class="textinputs">
             <label for="side_a">Side A</label>
@@ -24,8 +25,8 @@
             <button type="submit">Submit</button>
         </form>
         <div class="output">
-            <p>{{ triangleMessage }}</p>
-            <p>{{ triangleValidity }}</p>
+            <p id="msg">{{ triangleMessage }}</p>
+            <p id="valid">{{ triangleValidity }}</p>
         </div>
     </div>
 </body>
