@@ -79,11 +79,12 @@ class Triangle:
     @staticmethod
     def getSides():
         sides = []
-        for num in range(3):
+        for num in range(1, 4):
             try:
-                sides.append(float(input(f"Enter Side {num}")))
+                sides.append(float(input(f"Enter Side {num} ")))
             except ValueError:
                 sys.exit("Input must be a valid number")
+        return sides[0], sides[1], sides[2]
                 
 class MultipleTriangles:
     def __init__(self, csv_input):
